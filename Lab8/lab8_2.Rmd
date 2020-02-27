@@ -24,11 +24,11 @@ library("ape")
 
 ## Learning Goals
 *At the end of this exercise, you will be able to:*  
-1. Generate some basic summary statistics for a given sequence
-2. Read alignments into R
+1. Generate some basic summary statistics for a given sequence.
+2. Read alignments into R.
 3. Run basic analyses to generate trees both in line and using a premade script.
 
-In the previous section we explored the NCBI database, searched for and downloaded sequence data, and wrote that data into a fasta file Using read.fasta(). Now we're going to pull a sequence from the NCBI database and analyze it, then we'll use some example data in seqinR to learning how to visualize our sequence data in the form of a phylogenetic tree.
+In the previous section we explored the NCBI database, searched for and downloaded sequence data, and wrote that data into a fasta file Using `read.fasta()`. Now we're going to pull a sequence from the NCBI database and analyze it, then we'll use some example data in seqinR to learning how to visualize our sequence data in the form of a phylogenetic tree.
 
 If you've cleared your R environment since we started, pull that Dengue virus sequence again. (The accession number is "NC_001477")
 ```{r}
@@ -45,24 +45,20 @@ write.fasta(names="DEN-1", sequences=dengueseq, file.out="data/den1.fasta")
 dengue <- read.fasta(file = "data/den1.fasta")
 ```
 
-
 But the sequence is still stored as the first item in the R list, so let's pull it out using double square brackets
 ```{r}
 dengueseq <- dengue[[1]]
 ```
-
 
 Now we can look at the sequence and learn couple things about it. For example, we can find out how long our sequence is.
 ```{r}
 length(dengueseq)
 ```
 
-
 We can also create a table of the base composition of our sequence.
 ```{r}
 table(dengueseq)
 ```
-
 
 One variable we frequently report on our sequence data in publications is the "GC content" or the fraction of the sequence that is G's and C's.
 ```{r}
@@ -70,7 +66,6 @@ GC(dengueseq)
 ```
 
 ##Practice
-
 1. Using one of the lizard accession numbers from the first half of class, pull that sequence on it's own from GenBank, store it as a .fasta file, and read it into R. Then pull the sequence out of the R list using double square brackets.
 ```{r}
 
@@ -93,7 +88,7 @@ GC(dengueseq)
 
 
 
-Next, we are going to look at COI sequence data from gophers and their assocaited chewing lice. We'll start by using the read.alignment() function to read in the .fasta alignment files for each group and have a look at them
+Next, we are going to look at COI sequence data from gophers and their assocaited chewing lice. We'll start by using the `read.alignment()` function to read in the .fasta alignment files for each group and have a look at them
 ```{r}
 #COI sequences for 8 species of louse
 louse <- read.alignment(system.file("sequences/louse.fasta", package = "seqinr"), format = "fasta")
@@ -107,11 +102,14 @@ gopher$nam
 ```
 
 Let's pull the species names out of each dataset and create a vector for each.
+
+**lice**
 ```{r}
 l.names <- readLines(system.file("sequences/louse.names", package = "seqinr"))
 l.names
 ```
 
+**gophers**
 ```{r}
 g.names <- readLines(system.file("sequences/gopher.names", package = "seqinr"))
 g.names
@@ -150,7 +148,6 @@ And then put our graphical parameters back just how we found them
 ```{r}
 par(op)
 ```
-
 
 All right, let's step it up a notch. We may not be super duper programmers, but there are super duper programmers and they write cool scripts we can use. One such script is in your folder for this lab, and it's called "essai.r" This script creates the same tree diagram. The nice thing about using a script is that, similar to a markdown file, it is relatively simple to edit and also to share with others. 
 ```{r}

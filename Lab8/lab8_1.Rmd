@@ -132,7 +132,7 @@ Generally when we work with sequence data we want it in a specific format such a
 write.dna(lizards_sequences, file ="lizard_fasta_1.fasta", format = "fasta", append = FALSE, nbcol = 6, colsep = " ", colw = 10)
 ```
 
-## Search by taxon
+## Search by key words
 But what if we don't know the accession numbers for the sequences we want? No worries! R has a package for that! Rentrez (Entrez in R) is a package the interfaces with the NCBI database and allows us to search and pull sequences using key terms.
 ```{r}
 #install.packages("rentrez")
@@ -145,6 +145,11 @@ lizard_search <- entrez_search(db="nuccore", term= "Basiliscus basiliscus[Organi
 lizard_search
 ```
 
+We can limit our search using other criteria like the gene we are interested in connected by boolean operators (AND, OR, NOT). For example, we can limit the above search to only look for cytochrome oxidase one (COI) sequences.
+```{r}
+entrez_search(db="nuccore", term= "Basiliscus basiliscus[Organism] AND coi[GENE]", retmax=40)
+```
+In this case the search only returns a single hit, so for now we'll continue with our initial search results. 
 
 Now we'll use `entrez_fetch()` to get the sequence results of our search and store them as a character vector.
 ```{r}
@@ -163,7 +168,7 @@ Open this file in your text editor and have a look. You have downnloaded and for
 
 ## Practice
 
-1. Create your own search of the NCBI nucleotide database using `entrez_search()`. Limit your returned hits to 10.
+1. Create your own search of the NCBI nucleotide database using `entrez_search()` for RAG1 sequences of _Ornithorhynchus anatinus_. Limit your returned hits to 10. What is _Ornithorhynchus anatinus_?
 ```{r}
 
 ```
