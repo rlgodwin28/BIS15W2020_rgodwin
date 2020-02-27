@@ -116,7 +116,7 @@ lizards_sequences_GenBank_IDs <- paste(attr(lizards_sequences, "species"), names
 ```
 
 
-Generally when we work with sequence data we want it in a specific format such as a .fasta or .phylip because the software and packages we use to analyze sequence data need to have the data in a predictable format. We can use the write.dna function to write our sequences into a .fasta format.
+Generally when we work with sequence data we want it in a specific format such as a .fasta or .phylip because the software and packages we use to analyze sequence data need to have the data in a predictable format. We can use the write.dna() function to write our sequences into a .fasta format.
 ```{r}
 write.dna(lizards_sequences, file ="lizard_fasta_1.fasta", format = "fasta", append = FALSE, nbcol = 6, colsep = " ", colw = 10)
 ```
@@ -128,7 +128,7 @@ But what if we don't know the accession numbers for the sequences we want? No wo
 library(rentrez)
 ```
 
-Let's look for our lizards by their species name Basiliscus basiliscus using entrez_search(). We can tell entrez we want to search the nucleotide database (nuccore) for Basiliscus basiliscus which is an [Organism]. We'll also set the maximum returned hits to 40 (retmax=40).
+Let's look for our lizard sequences for the species Basiliscus basiliscus using entrez_search(). We can tell entrez we want to search the nucleotide database (nuccore) for Basiliscus basiliscus which is an [Organism]. We'll also set the maximum returned hits to 40 (retmax=40).
 ```{r}
 lizard_search <- entrez_search(db="nuccore", term= "Basiliscus basiliscus[Organism]", retmax=40)
 lizard_search
@@ -142,7 +142,7 @@ lizard_seqs
 ```
 
 
-Again, this will be more useful for us stored as a .fasta file. We can use the write() function to do this. Look very closely at those sequences. It looks like a big mess of text but there are "new line delimiters" in that text and we need to tell R what they are so it knows where the line endings are. In this case the new line delimiter is "\n", so we will write the data to a .fast file like this:
+The format of these sequences that R is now holding is in .fasta format, but they will be more useful for us if we actually write them out as a .fasta file. We can use the write() function to do this. Look very closely at those sequences. It looks like a big mess of text but there are "new line delimiters" in that text and we need to tell R what they are so it knows where the line endings are. In this case the new line delimiter is "\n", so we will write the data to a .fasta file like this:
 ```{r}
 write(lizard_seqs, "data/lizard_fasta_2.fasta", sep = "\n")
 ```

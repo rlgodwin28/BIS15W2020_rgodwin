@@ -30,11 +30,11 @@ library("ape")
 
 In the previous section we explored the NCBI database, searched for and downloaded sequence data, and wrote that data into a fasta file Using read.fasta(). Now we're going to pull a sequence from the NCBI database and analyze it, then we'll use some example data in seqinR to learning how to visualize our sequence data in the form of a phylogenetic tree.
 
-Let's pull that Dengue virus sequence again.
+If you've cleared your R environment since we started, pull that Dengue virus sequence again. (The accession number is "NC_001477")
 ```{r}
-dengueseq <- read.GenBank("NC_001477", as.character = TRUE)
-dengueseq
+
 ```
+
 
 And we'll write it to a .fasta file, and then read the file into R.
 ```{r}
@@ -42,8 +42,9 @@ write.fasta(names="DEN-1", sequences=dengueseq, file.out="data/den1.fasta")
 ```
 
 ```{r}
-dengue <- read.fasta(file = "den1.fasta")
+dengue <- read.fasta(file = "data/den1.fasta")
 ```
+
 
 But the sequence is still stored as the first item in the R list, so let's pull it out using double square brackets
 ```{r}
@@ -56,14 +57,38 @@ Now we can look at the sequence and learn couple things about it. For example, w
 length(dengueseq)
 ```
 
+
 We can also create a table of the base composition of our sequence.
 ```{r}
 table(dengueseq)
 ```
 
+
 One variable we frequently report on our sequence data in publications is the "GC content" or the fraction of the sequence that is G's and C's.
 ```{r}
 GC(dengueseq)
+```
+
+##Practice
+
+1. Using one of the lizard accession numbers from the first half of class, pull that sequence on it's own from GenBank, store it as a .fasta file, and read it into R. Then pull the sequence out of the R list using double square brackets.
+```{r}
+
+```
+
+2. What is the length of this sequence?
+```{r}
+
+```
+
+3. Generate a table showing the nucleotide base composition of your chosen sequence.
+```{r}
+
+```
+
+4. What is the GC content of the sequence you've chosen?
+```{r}
+
 ```
 
 
@@ -103,6 +128,7 @@ l <- nj(louse.JC)
 g <- nj(gopher.JC)
 ```
 
+
 Step 2: Illiustrate the trees! First a little book keeping because we're going to change some of our graphical paramaters and we want to be able to change them back easily.
 ```{r}
 op <- par(no.readonly = TRUE)
@@ -126,7 +152,7 @@ par(op)
 ```
 
 
-All right, let's step it up a notch. We may not be super duper programmers, but there are super duper programmers and they write cool scripts we can use. One such script is in your data folder, and it's called "essai.r" This script creates the same tree diagram but in R's "graphical device." The nice thing about using a script is that, similar to a markdown file, it is relatively simple to edit and also to share with others. 
+All right, let's step it up a notch. We may not be super duper programmers, but there are super duper programmers and they write cool scripts we can use. One such script is in your folder for this lab, and it's called "essai.r" This script creates the same tree diagram. The nice thing about using a script is that, similar to a markdown file, it is relatively simple to edit and also to share with others. 
 ```{r}
 source("essai.r")
 ```
