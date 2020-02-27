@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 
 ## GenBank
 
-We are going to begin class outside of R today. Follow the above link to the GenBank main page.
+We are going to begin class outside of R today. Follow the above link to the GenBank main page.  
 
 GenBank is a sequence database which holds a collection of all publicly available DNA sequences. It is part of a multinational group of databases along with the DNA Database of Japan (DDBJ) and the European Nutcleotide Archive (ENA). These three organizations share data on a daily basis.
 
@@ -110,7 +110,7 @@ attr(lizards_sequences, "species")
 ```
 
 
-This data would probably be easire to read is we made a vector that matched up our accession numbers with our species. Let's do that! We'll add the name of the gene we're looking at for good measure. This is good practice, especially if you might want to add other sequences later.
+This data would probably be easier to read is we made a vector that matched up our accession numbers with our species. Let's do that! We'll add the name of the gene we're looking at for good measure. This is good practice, especially if you might want to add other sequences later.
 ```{r}
 lizards_sequences_GenBank_IDs <- paste(attr(lizards_sequences, "species"), names(lizards_sequences), sep ="_RAG1_")
 ```

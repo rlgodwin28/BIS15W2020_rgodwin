@@ -28,8 +28,6 @@ library("ape")
 2. Read alignments into R
 3. Run basic analyses to generate trees both in line and using a premade script.
 
-
-
 In the previous section we explored the NCBI database, searched for and downloaded sequence data, and wrote that data into a fasta file Using read.fasta(). Now we're going to pull a sequence from the NCBI database and analyze it, then we'll use some example data in seqinR to learning how to visualize our sequence data in the form of a phylogenetic tree.
 
 Let's pull that Dengue virus sequence again.
