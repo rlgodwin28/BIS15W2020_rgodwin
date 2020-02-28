@@ -58,12 +58,10 @@ library(ape)
 library(seqinr)
 ```
 
-
 We can use ape to search the GenBank database just like we did using the web portal. We use the function `read.GenBank()` to read nucleotide sequences into R using accession numbers as arguments. Take a look at the help page and usage options for this function.
 ```{r}
 ?read.GenBank()
 ```
-
 
 The NCBI accession number for the DEN-1 Dengue virus genome sequence is `NC_001477`. We can use `read.GenBank()` to retrieve this sequence. 
 ```{r}
@@ -83,20 +81,20 @@ dengueseq
 ```
 
 
-That's a little better, now we can see the nucleotides that make up the sequence stored as a vector. Let's try fetching multiple sequences at once and storing them as a DNAbin object. This is a list of accession numbers for RAG1 sequences for a group of lizards. We're going to store this list as a vector which will then be used to import all of the sequences using `read.Genbank()`.
+That's a little better, now we can see the nucleotides that make up the sequence stored as a vector. Let's try fetching multiple sequences at once and storing them as a DNAbin object. This is a list of accession numbers for RAG1 sequences for a group of lizards. We're going to store this list as a vector which will then be used to import all of the sequences using `read.Genbank()`.  
+
 **Accession numbers**
 ```{r}
 lizards_accession_numbers <- c("JF806202", "HM161150", "FJ356743", "JF806205", "JQ073190", 	"GU457971", "FJ356741", "JF806207", "JF806210", "AY662592", "AY662591","FJ356748", "JN112660",  "AY662594", "JN112661", "HQ876437", "HQ876434", "AY662590", "FJ356740","JF806214", "JQ073188", "FJ356749", "JQ073189", "JF806216", "AY662598", "JN112653", "JF806204","FJ356747", "FJ356744", "HQ876440", "JN112651", "JF806215","JF806209")
 ```
 
 
-**Import from GenBank**
+**Import from GenBank**  
 Looking at this new object again we see some basic information on the sequences we've pulled from the database.
 ```{r}
 lizards_sequences <- read.GenBank(lizards_accession_numbers)
 lizards_sequences
 ```
-
 
 Let's explore this data just a little bit. We can use functions like `str()`, `attributes()`, `names()`, and `attr()` to get different kinds of information to include our accession numbers, the contents of the data, and a list of the included species. Try each of these functions and compare the output. 
 

@@ -1,5 +1,5 @@
 ---
-title: "Making Trees in R"
+title: "Building Phylogenetic Trees in R"
 date: "`r Sys.Date()`"
 output:
   html_document:
@@ -31,10 +31,10 @@ library("ape")
 In the previous section we explored the NCBI database, searched for and downloaded sequence data, and wrote that data into a fasta file Using `read.fasta()`. Now we're going to pull a sequence from the NCBI database and analyze it, then we'll use some example data in seqinR to learning how to visualize our sequence data in the form of a phylogenetic tree.
 
 If you've cleared your R environment since we started, pull that Dengue virus sequence again. (The accession number is "NC_001477")
-```{r}
-
+```{r include=FALSE}
+dengueseq <- read.GenBank("NC_001477", as.character = TRUE)
+dengueseq
 ```
-
 
 And we'll write it to a .fasta file, and then read the file into R.
 ```{r}
@@ -126,7 +126,6 @@ l <- nj(louse.JC)
 g <- nj(gopher.JC)
 ```
 
-
 Step 2: Illiustrate the trees! First a little book keeping because we're going to change some of our graphical paramaters and we want to be able to change them back easily.
 ```{r}
 op <- par(no.readonly = TRUE)
@@ -154,13 +153,8 @@ All right, let's step it up a notch. We may not be super duper programmers, but 
 source("essai.r")
 ```
 
-
-##Practice
-
-Oh no! You have presented your gopher-louse tree to your boss who responds, "Oh no! Not Jukes and Cantor! We must use the Kimura's 2-parameters distance model." But you're not bothered, you just open the essai.r script in your text editor and replace model = "JC69" with model = "K80". Edit your script and rerun it to generate your trees under this model of evolution. Are the results different than those generated above?
-```{r}
-
-```
+## Practice
+Oh no! You have presented your gopher-louse tree to your boss who responds, "Oh no! Not Jukes and Cantor! We must use the Kimura's 2-parameters distance model." But you're not bothered, you just open the essai.r script in your text editor and replace model = "JC69" with model = "K80". Edit your script and rerun it to generate your trees under this model of evolution. Are the results different than those generated above?  
 
 
 
